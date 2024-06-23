@@ -1,4 +1,6 @@
 ## 📦 Installation
+### Live link : https://roxiler-systems-assignment-mern.vercel.app/
+### Backend deployment link : https://roxiler-systems-assessment-backend.onrender.com/
 
 You can clone the project directly from this repo to your local system.
 
