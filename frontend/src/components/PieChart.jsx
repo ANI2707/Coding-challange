@@ -10,7 +10,7 @@ const PieChart = () => {
   useEffect(() => {
     const categoriesData = async () => {
       const data = await fetch(
-        `http://localhost:5000/api/products/piechart?month=${selectedMonth}`
+        `https://roxiler-systems-assessment-backend.onrender.com/api/products/piechart?month=${selectedMonth}`
       );
       const json = await data.json();
       setCategories(json);

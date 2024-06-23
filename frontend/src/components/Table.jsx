@@ -17,7 +17,7 @@ const Table = () => {
   useEffect(() => {
     const getProducts = async () => {
       const data = await fetch(
-        `http://localhost:5000/api/products?month=${selectedMonth}&search=${searchQuery}&page=${pageCount}&perPage=${10}`
+        `https://roxiler-systems-assessment-backend.onrender.com/api/products?month=${selectedMonth}&search=${searchQuery}&page=${pageCount}&perPage=${10}`
       );
       const json = await data.json();
 
