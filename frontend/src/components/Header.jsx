@@ -1,4 +1,4 @@
-import { CgMenuRightAlt } from "react-icons/cg";
+import { FaGithub } from "react-icons/fa";
 import { HiSun, HiMoon } from "react-icons/hi";
 import { useState, useEffect } from "react";
 
@@ -20,21 +20,23 @@ const Header = () => {
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900 py-10 max-sm:py-6  max-sm:max-h-[100px]">
-        <div className="flex items-center justify-center gap-20 max-sm:gap-4 capitalize ">
+        <div className="flex max-sm:flex-col items-center  max-sm:justify-center justify-between mx-20  md:gap-20 max-sm:gap-4 capitalize ">
           <div className="">
-            <p className="font-semibold text-3xl bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent dark:text-cyan-500 max-sm:text-2xl">
-              Transaction Dashboard
-            </p>
+            <h2 className="text-2xl font-extrabold leading-9 text-gray-900 dark:text-white sm:text-3xl sm:leading-10">
+              Transaction
+              <span className="text-indigo-600 mx-2">Dashboard</span>
+            </h2>
           </div>
-          <div className="text-[20px] text-[#00040f] dark:text-[#e1e1e1] ">
+          <div className=" flex gap-2 justify-center items-center text-[20px] text-[#00040f] dark:text-[#e1e1e1] ">
             <button onClick={handleTheme} className="text-3xl">
-              {theme === "dark" ? (
-                <HiMoon  />
-              ) : (
-                <HiSun  />
-              )}
+              {theme === "dark" ? <HiMoon /> : <HiSun />}
             </button>
+            <a href="https://github.com/ANI2707/Coding-challange" target="_blank" className="text-3xl">
+                <FaGithub />
+
+              </a>
           </div>
+          
         </div>
       </section>
     </>

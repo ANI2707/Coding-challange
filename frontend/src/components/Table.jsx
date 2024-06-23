@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useMonth } from "../../providers/MonthContext";
+import { useMonth } from "../providers/MonthContext";
 
 const Table = () => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [pageCount, setPageCount] = useState(1);
-
+  const [totalPages,setTotalPages]=useState(null);
+  
   const { selectedMonth, setMonth } = useMonth();
 
-    const handleChange =(e)=>{
-        setMonth(e.target.value)
-    }
+  const handleChange = (e) => {
+    setMonth(e.target.value);
+  };
+  
 
   useEffect(() => {
     const getProducts = async () => {
@@ -19,13 +21,13 @@ const Table = () => {
       );
       const json = await data.json();
 
+      setTotalPages(json.totalPages)
+
       setProducts(json.data);
     };
     getProducts();
-  }, [selectedMonth,searchQuery, pageCount]);
+  }, [selectedMonth, searchQuery, pageCount]);
 
-
-  
   return (
     <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5  ">
       <div className="mx-auto max-w-screen-2xl px-4 lg:px-12">
@@ -70,7 +72,6 @@ const Table = () => {
                   onChange={handleChange}
                   className="block w-full px-3 py-2 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
                 >
-
                   <option value="">Select Month</option>
                   <option value="1">January</option>
                   <option value="2">February</option>
@@ -117,7 +118,7 @@ const Table = () => {
               </thead>
               <tbody>
                 {products.map((product, _id) => (
-                  <tr className="border-b dark:border-gray-700">
+                  <tr key={_id} className="border-b dark:border-gray-700">
                     <th
                       scope="row"
                       className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -152,13 +153,14 @@ const Table = () => {
               </span>
               of
               <span className="font-semibold text-gray-900 dark:text-white px-2">
-                {pageCount}/6
+                {pageCount}/{totalPages}
               </span>
             </span>
             <div className="flex">
               <button
+                disabled={pageCount===1}
                 onClick={() => setPageCount(pageCount - 1)}
-                className="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className={`${pageCount===1 && 'cursor-not-allowed opacity-45'} flex items-center justify-center px-3 h-8 me-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
               >
                 <svg
                   className="w-3.5 h-3.5 me-2 rtl:rotate-180"
@@ -169,17 +171,18 @@ const Table = () => {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M13 5H1m0 0 4 4M1 5l4-4"
                   />
                 </svg>
-                Previous
+                Prev
               </button>
               <button
                 onClick={() => setPageCount(pageCount + 1)}
-                className="flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className={`${totalPages===pageCount && "cursor-not-allowed opacity-45"} flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
+                disabled={totalPages === pageCount}
               >
                 Next
                 <svg
@@ -191,9 +194,9 @@ const Table = () => {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
