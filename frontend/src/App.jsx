@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react"
-import Header from "./components/Header"
+import Header from "./components/Header";
 import Table from "./components/Table";
+import Stats from "./components/Stats";
+import { MonthProvider } from "../providers/MonthContext";
 
 function App() {
-  
-
-  
-
   return (
     <>
-      <Header/>
-        <Table/>
-        
+      <MonthProvider>
+        <Header />
+        <Table />
+        <Stats />
+      </MonthProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

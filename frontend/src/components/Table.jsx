@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useMonth } from "../../providers/MonthContext";
 
 const Table = () => {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [pageCount, setPageCount] = useState(1);
-  const [selectedMonth, setSelectedMonth] = useState(3);
 
+  const { selectedMonth, setMonth } = useMonth();
 
     const handleChange =(e)=>{
-        setSelectedMonth(e.target.value);   
+        setMonth(e.target.value)
     }
 
   useEffect(() => {
@@ -125,7 +126,7 @@ const Table = () => {
                     </th>
                     <td className="px-4 py-3">{product.title}</td>
                     <td className="px-4 py-3">{product.description}</td>
-                    <td className="px-4 py-3">{product.price}</td>
+                    <td className="px-4 py-3">{product.price}₹</td>
                     <td className="px-4 py-3">{product.category}</td>
                     <td className="px-4 py-3">{product.sold ? "Yes" : "No"}</td>
                     <td className="mx-auto">
