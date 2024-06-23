@@ -21,7 +21,7 @@ const BarChart = () => {
   }, [selectedMonth]);
 
   return (
-    <div className="max-h-fit dark:bg-gray-900">
+    <div className=" dark:bg-gray-900">
       <div className="pt-12 bg-gray-50 dark:bg-gray-900 sm:pt-20">
         <div className="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">

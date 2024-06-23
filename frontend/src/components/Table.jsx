@@ -117,6 +117,9 @@ const Table = () => {
                 </tr>
               </thead>
               <tbody>
+                {products.length==0 && <tr className="">
+                    <td className="mx-auto text-center text-red-500">No Results Found!!</td>
+                  </tr>}
                 {products.map((product, _id) => (
                   <tr key={_id} className="border-b dark:border-gray-700">
                     <th

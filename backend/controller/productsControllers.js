@@ -16,7 +16,7 @@ async function products(req, res) {
 
     // Handle search criteria if search parameter is provided
     if (search) {
-      const parsedNumber = parseFloat(search);
+      const parsedNumber = parseInt(search);
 
       if (!isNaN(parsedNumber)) {
         // If the search parameter is a valid number, search by price

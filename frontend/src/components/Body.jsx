@@ -6,7 +6,7 @@ import { useMonth } from "../providers/MonthContext";
 const Body = () => {
     const {selectedMonth}=useMonth()
   return (
-    <div className="">
+    <div className="h-screen">
       
       {selectedMonth !=="" && (
         <>
