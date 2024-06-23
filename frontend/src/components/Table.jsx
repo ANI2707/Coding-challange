@@ -72,7 +72,7 @@ const Table = () => {
                   onChange={handleChange}
                   className="block w-full px-3 py-2 text-sm border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
                 >
-                  <option value="">Select Month</option>
+                  <option value="">All Transaction</option>
                   <option value="1">January</option>
                   <option value="2">February</option>
                   <option value="3">March</option>
