@@ -29,10 +29,3 @@ MONGODB_URI=<mongodb connection uri for the database>
 PORT=<port number on which backend is running>
 ```
 
-### 5. Create Frontend Environment
-
-All the environment variables for react must be prefixed with `REACT_APP_`.
-
-```bash
-REACT_APP_BACKEND=<url of the backend>
-```
