@@ -5,20 +5,18 @@ You can clone the project directly from this repo to your local system.
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/username/Devlabs.git
+git clone https://github.com/ANI2707/Coding-challange.git
 ```
 
-### 2. Install Dependencies
+### 2. Install Dependencies[frontend & backend]
 
 ```bash
 npm install
 ```
 
-### 3. Start Development Server
+### 3. Start Development Server[frontend & Backend]
 
 ```bash
-npm start
-#or
 npm run dev
 ```
 
