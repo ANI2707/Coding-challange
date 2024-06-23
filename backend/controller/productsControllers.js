@@ -2,8 +2,10 @@ import {Product} from "../models/productSchema.js";
 
 //get all products
 async function products(req, res) {
-  const { month, search, page = 1, perPage = 10 } = req.query;
+  const { month, search, page=1, perPage=10 } = req.query;
   const filter = {};
+  const pageNumber = parseInt(page, 10);
+  const perPageNumber = parseInt(perPage, 10);
   try {
     // Handle month filter if provided and valid
     if (month && parseInt(month) >= 1 && parseInt(month) <= 12) {
@@ -32,14 +34,14 @@ async function products(req, res) {
     // Fetch products based on the constructed filter
     const totalCount = await Product.countDocuments(filter);
     const products = await Product.find(filter)
-      .skip((page - 1) * perPage)
-      .limit(Number(perPage));
+      .skip((pageNumber - 1) * perPageNumber)
+      .limit(Number(perPageNumber));
 
     res.status(200).json({
       totalCount,
-      currentPage: page,
-      perPage: perPage,
-      totalPages: Math.ceil(totalCount / perPage),
+      currentPage: pageNumber,
+      perPage: perPageNumber,
+      totalPages: Math.ceil(totalCount / perPageNumber),
       data: products,
     });
   } catch (error) {
